@@ -3,6 +3,7 @@
 package com.example.notes.screens
 
 import android.annotation.SuppressLint
+import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.sharp.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -37,48 +39,49 @@ fun MainScreen(navController: NavHostController) {
             onClick = {
                 navController.navigate(NavRoute.Add.route)
             }) {
-            Icon(imageVector = Icons.Filled.Add, contentDescription = "Add Icons")
+            Icon(imageVector = Icons.Sharp.Add, contentDescription = "Add Icons")
 
         }
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp, horizontal = 24.dp)
-                .clickable {
-                    navController.navigate(NavRoute.Note.route)
-                },
-            elevation = 10.dp
+        Column(
 
         ) {
-            Column(
-                modifier = Modifier.padding(vertical = 8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "Title",
-                    fontSize = 24.sp,
-                    )
-                Text(
-
-                    text = "Title",
-                    fontSize = 24.sp,
-                )
-            }
+            noteItem(title = "Note 1", subtitle = "Sub title for note 1", navController = navController)
+            noteItem(title = "Note 2", subtitle = "Sub title for note 2", navController = navController)
+            noteItem(title = "Note 3", subtitle = "Sub title for note 3", navController = navController)
+            noteItem(title = "Note 4", subtitle = "Sub title for note 4", navController = navController)
         }
     }
 }
 
-fun Card() {
-    modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 8.dp, horizontal = 24.dp)
-        .clickable {
-            navController.navigate(NavRoute.Note.route)
-        },
+@Composable
+fun noteItem(title: String, subtitle: String, navController: NavHostController){
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 80.dp, horizontal = 24.dp)
+            .clickable {
+                navController.navigate(NavRoute.Note.route)
+            },
 
+
+        ) {
+        Column(
+            modifier = Modifier.padding(vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = title,
+                fontSize = 24.sp,
+            )
+            Text(
+
+                text = subtitle,
+                fontSize = 24.sp,
+            )
+        }
+    }
 
 }
-
 @Preview(showBackground = true)
 @Composable
 fun prevMainScreen(){

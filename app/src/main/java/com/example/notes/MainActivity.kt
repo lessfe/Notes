@@ -47,16 +47,14 @@ class MainActivity : ComponentActivity() {
     }
     @Composable
     fun MyTopAppBar() {
-        TopAppBar(
+        /*TopAppBar(
             title =  { Text("Заметки")},
             Modifier.background(androidx.compose.ui.graphics.Color.Blue),
 
-        )
+        )*/
 
     }
 }
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
