@@ -25,4 +25,4 @@ abstract class AppRoomDatabase: RoomDatabase() {
             } else INSTANCE as AppRoomDatabase
         }
     }
-}
+    }

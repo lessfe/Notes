@@ -36,6 +36,7 @@ class MainViewModel(application: Application):AndroidViewModel(application) {
     }
     fun addNote(note: Note, onSuccess: () -> Unit){
         viewModelScope.launch(Dispatchers.IO) {
+            // Вызываем метод create переменной REPOSITORY, которая яв-ся объетом интерфейса DatabaseRepository, и реализуем метод
             REPOSITORY.create(note = note) {
                 viewModelScope.launch(Dispatchers.Main){
                     onSuccess()
